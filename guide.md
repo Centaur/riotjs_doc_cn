@@ -56,7 +56,7 @@ Riot 自定义标签是构建用户界面的单元。它们构成了应用的"�
 </todo>
 ```
 
-自定义标签会被 [编译](compiler.html) 成 JavaScript.
+自定义标签会被 [编译](compiler.md) 成 JavaScript.
 
 参阅 [在线示例](http://muut.github.io/riotjs/demo/), 也可以浏览 [代码](https://github.com/muut/riotjs/tree/gh-pages/demo), 或下载[zip包](https://github.com/muut/riotjs/archive/gh-pages.zip).
 
@@ -130,7 +130,7 @@ Riot标签是布局（HTML）与逻辑（JavaScript）的组合。以下是基�
 
 现在可选的`type`值包括 "coffeescript", "typescript", "es6" 和 "none". 也可以为 `language` 加上 "text/" 前缀, 如 "text/coffeescript".
 
-参阅 [预处理器](/riotjs/compiler.html#pre-processors) 获取更多细节。
+参阅 [预处理器](compiler.html#预处理器) 获取更多细节。
 
 
 ### 标签css
@@ -287,7 +287,7 @@ riot.mount('todo', { title: 'My TODO app', items: [ ... ] })
 </todo>
 ```
 
-对同一个事件可以有多个事件监听器. 参阅 [observable](/riotjs/api/#observable) 获取关于事件的更多细节。
+对同一个事件可以有多个事件监听器. 参阅 [observable](api/observable.md) 获取关于事件的更多细节。
 
 
 ## 表达式
@@ -379,7 +379,7 @@ riot.settings.brackets = '\{\{ }}'
 
 起始括号和终止括号之间用空格分隔。
 
-如果使用预编译 [pre-compiler](compiler.html#pre-compilation) ，必须提前指定 `brackets` 参数.
+如果使用 [预编译](compiler.md#预编译) ，必须提前指定 `brackets` 参数.
 
 
 
@@ -488,7 +488,7 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 </my-tag>
 ```
 
-`yield` 的用法 参阅 [API docs](/riotjs/api/#yield) .
+`yield` 的用法 参阅 [API文档](api/tags.md#yield) .
 
 ## DOM元素与name自动绑定
 

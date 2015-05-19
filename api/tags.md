@@ -26,7 +26,7 @@ var tags = riot.mount('.customer')
 var tags = riot.mount('account', api)
 ```
 
-@返回值: 加载成功的标签实例的数组[tag instances](#tag-instance)
+@返回值: 加载成功的[标签实例](#tag-instance)的数组
 
 ### riot.mount('*', [opts]) | #mount-star.
 
@@ -83,10 +83,10 @@ var mytag = require('my-tag')
 riot.render(mytag, { foo: 'bar' })
 ```
 
-@返回值: html
+@返回值: html 
 
 
-## 标签实例
+## 标签实例 | #tag-instance
 
 每一个标签实例有如下属性:
 
