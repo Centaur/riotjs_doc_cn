@@ -10,7 +10,7 @@ minify: false
 
 Riot 自定义标签是构建用户界面的单元。它们构成了应用的"视图"部分。我们先从一个实现TODO应用的例子来感受一下Riot的各个功能:
 
-```
+```html
 <todo>
 
   <h3>{ opts.title }</h3>
@@ -80,7 +80,7 @@ Riot标签是布局（HTML）与逻辑（JavaScript）的组合。以下是基�
 
 自定义标签文件里的标签定义总是从某一行的行首开始：
 
-```
+```html
 <!-- 正确 -->
 <my-tag>
 
@@ -101,7 +101,7 @@ Riot标签是布局（HTML）与逻辑（JavaScript）的组合。以下是基�
 
 可以省略 `<script>` 标签:
 
-```
+```html
 <todo>
 
   <!-- 布局 -->
@@ -120,7 +120,7 @@ Riot标签是布局（HTML）与逻辑（JavaScript）的组合。以下是基�
 
 可以使用 `type` 属性来指定预处理器. 例如:
 
-```
+```html
 <script type="coffeescript">
   # 标签逻辑
 </script>
@@ -214,7 +214,7 @@ riot.mount('todo, forum, comments')
 
 `mount` 方法的第二个参数用来传递标签参数
 
-```
+```js
 <script>
 riot.mount('todo', { title: 'My TODO app', items: [ ... ] })
 </script>
@@ -224,7 +224,7 @@ riot.mount('todo', { title: 'My TODO app', items: [ ... ] })
 
 在标签内部，通过 `opts` 变量来访问这些参数，如下:
 
-```
+```js
 <my-tag>
 
   <!-- 在HTML中访问参数 -->
@@ -317,7 +317,7 @@ riot.mount('todo', { title: 'My TODO app', items: [ ... ] })
 建议的设计方法是使表达式保持最简从而使你的HTML尽量干净。如果你的表达式变得太复杂，建议你考虑将它的逻辑转移到 "update" 事件的处理逻辑中. 例如:
 
 
-```
+```js
 <my-tag>
 
   <!-- `val` 的值在下面的代码中计算 .. -->
@@ -390,7 +390,7 @@ riot.settings.brackets = '\{\{ }}'
 
 Riot 表达式只能渲染不带HTML格式的文本值。如果真的需要，可以写一个自定义标签来做这件事. 例如:
 
-```
+``` js
 <raw>
   <span></span>
 
@@ -400,7 +400,7 @@ Riot 表达式只能渲染不带HTML格式的文本值。如果真的需要，�
 
 这个标签定义以后，可以被用在其它的标签里. 例如
 
-```
+```js
 <my-tag>
   <p>原始HTML: <raw content="{ html }"/> </p>
 
@@ -419,7 +419,7 @@ Riot 表达式只能渲染不带HTML格式的文本值。如果真的需要，�
 我们来定义一个父标签 `<account>` ，其中嵌套一个标签 `<subscription>`:
 
 
-```
+```js
 <account>
   <subscription  plan={ opts.plan } show_details="true" />
 </account>
@@ -440,7 +440,7 @@ Riot 表达式只能渲染不带HTML格式的文本值。如果真的需要，�
 
 如果在页面上加载 `account` 标签，带 `plan` 参数:
 
-```
+```js
 <body>
   <account></account>
 </body>
@@ -492,7 +492,7 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 
 带有 `name` 或 `id` 属性的DOM元素将自动被绑定到上下文中，这样就可以从JavaScript中方便地访问它们：
 
-```
+```js
 <login>
   <form id="login" onsubmit={ submit }>
     <input name="username">
@@ -516,7 +516,7 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 
 响应DOM事件的函数称为 "事件处理器". 这样定义:
 
-```
+```js
 <login>
   <form onsubmit={ submit }>
 
@@ -542,7 +542,7 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 
 例如，下面的submit处理器将会实际提交表单至服务器：
 
-```
+```js
 submit() {
   return true
 }
@@ -583,7 +583,7 @@ submit() {
 
 循环是用 `each` 属性来实现的:
 
-```
+```js
 <todo>
   <ul>
     <li each={ items } class={ completed: done }>
@@ -607,7 +607,7 @@ submit() {
 循环中的每一项将创建一个新的上下文，从其中通过 `parent` 变量来访问上级上下文. 例如:
 
 
-```
+```js
 <todo>
   <div each={ items }>
     <h3>{ title }</h3>
@@ -631,7 +631,7 @@ submit() {
 
 事件处理器中可以通过 `event.item` 来访问单个集合项. 下面我们来实现 `remove` 函数:
 
-```
+```js
 <todo>
   <div each={ items }>
     <h3>{ title }</h3>
@@ -673,7 +673,7 @@ submit() {
 数组元素不要求是对象. 也可以是字符串或数字. 这时可以用 `{ name, i in items }` 写法:
 
 
-```
+```js
 <my-tag>
   <p each="{ name, i in arr }">{ i }: { name }</p>
 
@@ -688,7 +688,7 @@ submit() {
 
 也可以对普通对象做循环. 例如:
 
-```
+```js
 <my-tag>
   <p each="{ name, value in obj }">{ name } = { value }</p>
 
@@ -707,13 +707,13 @@ submit() {
 
 页面body中的标准 HTML 元素也可以作为riot标签来使用，只要加上 `riot-tag` 属性.
 
-```
+```html
 <ul riot-tag="my-tag"></ul>
 ```
 
 这为用户提供了一种选择，与css框架的兼容性更好. 这些标签将被与其它自定义标签一样进行处理。
 
-```
+```js
 riot.mount('my-tag')
 ```
 
@@ -723,7 +723,7 @@ riot.mount('my-tag')
 
 Riot 支持服务端渲染，使用 Node/io.js 可以方便地引用标签定义并渲染成 html:
 
-```
+```js
 var riot = require('riot')
 var timer = require('timer.tag')
 
@@ -794,7 +794,7 @@ Observable 是发送和接收消息的一般化工具。它是区分不同模块
 
 以下是一个非常小的实现用户登录的Riot应用骨架结构:
 
-```
+```js
 // Login API
 var auth = riot.observable()
 
@@ -828,7 +828,7 @@ auth.login = function(params) {
 
 加载
 
-```
+```html
 <body>
   <login></login>
   <script>riot.mount('login', auth)</script>
