@@ -1,83 +1,85 @@
 
 nogen: true
 
+完成度：100%
+
 ====
 
 # Observable
 
 ### riot.observable(el)
 
-Adds [Observer](http://en.wikipedia.org/wiki/Observer_pattern) support for the given object `el` or if the argument is empty a new observable instance is created and returned. After this the object is able to trigger and listen to events. For example:
+为 `el` 对象添加 [Observer](http://en.wikipedia.org/wiki/Observer_pattern) 支持，如果参数为空，则返回一个新创建的observable实例。之后该对象就可以触发和监听事件了。例如:
 
 ``` js
 function Car() {
 
-  // Make Car instances observable
+  // 使 Car 实例成为 observable
   riot.observable(this)
 
-  // listen to 'start' event
+  // 监听 'start' 事件
   this.on('start', function() {
-    // engine started
+    // 发动引擎
   })
 
 }
 
-// make a new Car instance
+// 创建一个新的 Car 实例
 var car = new Car()
 
-// trigger 'start' event
+// 触发 'start' 事件
 car.trigger('start')
 ```
 
-@returns the given object `el` or a new observable instance
+@返回值 参数 `el` 或新的observable 实例
 
 
 ### el.on(events, callback) | #observable-on
 
-Listen to the given space separated list of `events` and execute the `callback` each time an event is triggered.
+监听用空格分隔的 `event` 列表，每次事件被触发时调用 `callback` 
 
 ``` js
-// listen to single event
+// 监听单个事件
 el.on('start', function() {
 
 })
 
-// listen to multiple events, the event type is given as the argument
+// 监听多个事件，事件类型将作为回调函数的参数传递
 el.on('start stop', function(type) {
 
-  // type is either 'start' or 'stop'
+  // type 是 'start' 或 'stop'
 
 })
 ```
 
-@returns `el`
+@返回值 `el`
 
 ### el.one(event, callback) | #observable-one
 
-Listen to the given `event` and execute the `callback` at most once.
+监听指定的 `event` 但只执行 `callback` 最多一次.
 
 ``` js
-// run the function once, even if 'start' is triggered multiple times
+// 即使 'start' 被触发多次，也只执行回调函数一次
 el.one('start', function() {
 
 })
 ```
 
-@returns `el`
+@返回值 `el`
 
 ### el.off(events) | #observable-off
 
-Removes the given space separated list of event listeners
+删除参数中指定的以空格分隔的事件的监听器
 
 ``` js
 el.off('start stop')
 ```
 
-@returns `el`
+@返回值 `el`
 
 ### el.off(events, fn)
 
-Removes the given callback from the list of events
+从给定的事件列表的监听器中删除指定的那个
 
 ``` js
 function doIt() {
@@ -86,42 +88,42 @@ function doIt() {
 
 el.on('start middle end', doIt)
 
-// remove a specific listener from start and end events
+// 从 start 和 end 事件的监听器中删除指定的那个
 el.off('start end', doIt)
 ```
 
-@returns `el`
+@返回值 `el`
 
 ### el.off('*')
 
-Removes all listeners from all event types.
+删除所有事件的所有监听器
 
-@returns `el`
+@返回值 `el`
 
 
 ### el.trigger(event) | #observable-trigger
 
-Execute all callback functions that listen to the given `event`
+触发事件。执行所有监听 `event` 的回调函数
 
 ``` js
 el.trigger('start')
 ```
 
-@returns `el`
+@返回值 `el`
 
 ### el.trigger(event, arg1 ... argN)
 
-Execute all callback functions that listen to the given `event`. Any number of extra parameters can be provided for the listeners.
+执行所有监听 `event` 的回调函数，可以传递任意数量的附加参数给监听器。
 
 ``` js
-// listen to 'start' event and expect extra arguments
+// 监听 'start' 事件，并期待附加参数
 el.on('start', function(engine_details, is_rainy_day) {
 
 })
 
-// trigger start event with extra parameters
+// 触发 start 事件，并传递附加参数
 el.trigger('start', { fuel: 89 }, true)
 
 ```
 
-@returns `el`
+@返回值 `el`

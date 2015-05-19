@@ -1,18 +1,20 @@
 
 nogen: true
 
+完成度： 100%
+
 ====
 
-# Router
+# 路由器
 
-The Riot Router is the most minimal router implementation you can find and it works consistently on all browsers including IE8. It only listens to changes on the URL hash (the part after the `#` character). Most single page applications deal with the hash only but if you really care about full URL changes you should use a different router implementation.
+Riot 路由器是你能够找到的最小化的路由器实现，在包括IE8在内的众多浏览器上都能工作。它只监视URL hash的变化 (`#` 之后的那一部分). 大多数单页应用都只处理hash，如果你真的需要关心整个URL的变化你最好使用其它的路由器实现。
 
-The Riot router is best in routing schemes in which the route's hierarchical parts, after the "#", are separated with the "/" character. In that case Riot gives you direct access to these parts.
+Riot 路由器在 "#" 之后的部分由 "/" 字符分隔时工作得最好. 这种情况下Riot直接把各个部分取出来供你使用。
 
 
 ### riot.route(callback) | #route
 
-Execute the given `callback` when the URL hash changes. For example
+当URL hash变化时执行 `callback` 例如
 
 ``` js
 riot.route(function(collection, id, action) {
@@ -20,7 +22,7 @@ riot.route(function(collection, id, action) {
 })
 ```
 
-If for example the hash changes to `#customers/987987/edit` then in the above example the arguments would be:
+举个例子，如果 hash 变成 `#customers/987987/edit` 则上例中的参数是:
 
 
 ``` js
@@ -29,34 +31,34 @@ id = '987987'
 action = 'edit'
 ```
 
-The hash can change in the following ways:
+hash 发生变化可能是以下几种情况:
 
-1. A new hash is typed into the location bar
-2. When the back/forward buttons are pressed
-3. When `riot.route(to)` is called
+1. 地址栏中输入的新的 hash 值
+2. 当浏览器的 后退/前进按钮被点击
+3. 当代码中调用了 `riot.route(to)` 
 
 ### riot.route.start() | #route-start
 
-Start listening the window hash changes and it's automatically called when riot gets loaded. You typically use this method together with [route.stop](#route-stop). Example:
+开始监听window hash. 这个方法在riot加载时会自动调用. 如果你要调用它，通常是与 [route.stop](#route-stop) 一起使用. 例如:
 
 ``` js
-riot.route.stop() // clear all the old riot.route callbacks
-riot.route.start() // start again
+riot.route.stop() // 清除所有旧的 riot.route 回调
+riot.route.start() // 重新启动
 ```
 
 ### riot.route.stop() | #route-stop
 
-Remove the hashchange listeners clearing also the [route.route](#route) callbacks.
+清除所有 hashchange 监听器以及 [route.route](#route) 回调.
 
 ``` js
 riot.route.stop()
 ```
 
-Stopping the default router allow the use of a different router on your appliaction.
+停止默认路由器后可以在应用中使用其它的路由器。
 
 ### riot.route(to) | #route-to
 
-Changes the browser URL and notifies all the listeners assigned with `riot.route(callback)`. For example:
+修改浏览器URL并通知所有通过 `riot.route(callback)` 指定的监听器，例如:
 
 ``` javascript
 riot.route('customers/267393/edit')
@@ -64,7 +66,7 @@ riot.route('customers/267393/edit')
 
 ### riot.route.exec(callback) | #route-exec
 
-Study the current hash "in place" using given `callback` without waiting for it to change. For example
+对当前的 hash 值调用 `callback` 而不等待其发生变化。例如
 
 ``` js
 riot.route.exec(function(collection, id, action) {
@@ -74,7 +76,7 @@ riot.route.exec(function(collection, id, action) {
 
 ### riot.route.parser(parser) | #route-parser
 
-Changes the default parser to a custom one. Here's one that parses paths like this:
+将默认解析器改成自定义解析器. 下面是自定义路径解析的例子:
 
 `!/user/activation?token=xyz`
 
@@ -97,7 +99,7 @@ riot.route.parser(function(path) {
 })
 ```
 
-And here you'll receive the params when the URL changes:
+当URL变化时，你可以得到这些参数:
 
 ```
 riot.route(function(target, action, params) {

@@ -1,6 +1,8 @@
 
 nogen: true
 
+完成度：100%
+
 ====
 
 # Compiler
@@ -11,7 +13,7 @@ nogen: true
 
 ### riot.compile(callback) | #compile
 
-将所有用 `<script type="riot/tag">` 定义的标签编译成 JavaScript. These can be inlined script definitions or external resources that load scripts defined with `src` attribute. After all scripts are compiled the given `callback` method is called. For example:
+将所有用 `<script type="riot/tag">` 定义的标签编译成 JavaScript. 这些标签可以是页面上的脚本定义或用 script `src` 属性加载的外部资源。 当所有脚本被编译完成后会调用指定的 `callback` 方法。 例如:
 
 ``` javascript
 riot.compile(function() {
@@ -19,29 +21,29 @@ riot.compile(function() {
 })
 ```
 
-You can leave out the `riot.compile` call and write just:
+可以省去 `riot.compile` 直接写:
 
 ``` javascript
 var tags = riot.mount('*')
 ```
 
-but you don't get to know when external resources are loaded and compiled and the return value is an empty array if you have external scripts. If all scripts are defined on the page then riot.compile step can be left out.
+但我们无法确定外部资源何时被加载和编译完成，所以如果有外部脚本，riot.mount的返回值可能是空数组。所以只有当所有的脚本定义在当前页面上时才能省略掉 riot.compile。
 
-For more details, read the compiler [general introduction](/riotjs/compiler.html).
+了解更多细节，请阅读编译器 [介绍](/riotjs/compiler.html).
 
 ### riot.compile(url, callback)
 
-Loads the given URL and compiles all tags after which the `callback` is called. For example:
+加载指定的 URL 并编译所有的标签，编译完成后调用 `callback` 。例如:
 
 ``` javascript
 riot.compile('my/tags.js', function() {
-  // the loaded tags are ready to be used
+  // 加载的标签定义已经可用
 })
 ```
 
 ### riot.compile(tag)
 
-Compiles and executes the given `tag`. For example:
+编译并执行指定的 `tag`. 例如:
 
 ```
 <template id="my_tag">
@@ -55,23 +57,23 @@ riot.compile(my_tag.innerHTML)
 </script>
 ```
 
-After the call you can use `my-tag` normally.
+调用返回后可以正常使用 `my-tag` .
 
-A tag definition is assumed if the first non- empty character is `<`, otherwise the argument is taken as URL.
+如果第一个非空字符是 `<` 其内容被认为是一个标签定义，否则被认为是一个 URL
 
-@returns the compiled JavaScript as string
+@返回值 编译生成的 JavaScript 代码字符串
 
 ### riot.compile(tag, true)
 
-Compiles the `tag` and returns it as a string. Only the transformation from the tag to JavaScript is performed and the tag is not executed on the browser. You can use this method to benchmark the compiler performance for example.
+将 `tag` 编译成字符串。Only the transformation from the tag to JavaScript is performed and the tag is not executed on the browser. You can use this method to benchmark the compiler performance for example.
 
 ``` js
 var js = riot.compile(my_tag.innerHTML, true)
 ```
 
-## On server | #compile-on-server
+## 服务端编译 | #compile-on-server
 
-After `npm install riot` you can do following:
+`npm install riot` 后你可以做这些:
 
 ```
 var riot = require('riot')
@@ -79,4 +81,4 @@ var riot = require('riot')
 var js = riot.compile(tag)
 ```
 
-The compile function takes the tag definition (string) and returns JavaScript (string).
+`compile` 函数参数是标签定义字符串，返回 JavaScript 字符串.
