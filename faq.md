@@ -3,7 +3,7 @@ title: Riot FAQ
 subtitle: FAQ
 description: none
 
-完成度 100%
+翻译完成度 100%
 
 ====
 

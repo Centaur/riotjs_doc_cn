@@ -3,6 +3,8 @@ title: Riot vs React vs Polymer
 subtitle: Compare
 description: How Riot differs from React and Polymer
 
+翻译完成度 100%
+
 ====
 
 # React
@@ -13,7 +15,7 @@ Riot 2.0 受到 React 和 “内聚” 思想的启发。引用 Facebook 开发�
 
 我们应该构建可重用的组件而不是模板. 将逻辑从模板中分离出来，实际上我们是把本该在一起的东西拆开了。
 
-通过在同一个组件中将这些相关的技术组合起来，系统变得更干净。By combining these related technologies together under the same component the system becomes cleaner. 我们尊敬 React因为它体现了这种洞察力。
+通过在同一个组件中将这些相关的技术组合起来，系统变得更干净。我们要表达对 React 的敬意，因为它体现了超凡的洞察力。
 
 我们用 React 用得挺好的。在 [Disqus Importer](/importer/) 中我们仍然在使用它。但我们被React的语法和文件大小 (*特别是* 语法)所困扰. 我们开始思考事情可能可以更简单；无论是内部实现还是对用户的接口。
 
@@ -23,7 +25,7 @@ Riot 2.0 受到 React 和 “内聚” 思想的启发。引用 Facebook 开发�
 以下示例直接引用自 React 首页:
 
 
-```
+```js
 var TodoList = React.createClass({
   render: function() {
     var createItem = function(itemText) {
@@ -94,7 +96,7 @@ JSX 是 HTML 和 JavaScript 的混合体. 在组件中你可以在各处包含HT
 
 上面的标签这样加载到页面上:
 
-```
+```js
 <todo></todo>
 
 <script>riot.mount('todo')</script>

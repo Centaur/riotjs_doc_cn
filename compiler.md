@@ -3,7 +3,7 @@ title: Riot compiler
 subtitle: Compiler
 description: From &lt;custom-tag> to JavaScript
 
-完成度 100%
+翻译完成度 100%
 
 ====
 
@@ -94,7 +94,7 @@ riot --ext html
 
 ### Node 模块
 
-```
+```js
 var riot = require('riot')
 
 var js = riot.compile(source_string)
@@ -115,7 +115,7 @@ compile 函数接受string参数，返回string.
 
 源语言使用命令行参数 `--type` or `-t` 来指定，也可以在script标签上指定:
 
-```
+```html
 <my-tag>
   <h3>My layout</h3>
 
@@ -135,7 +135,7 @@ riot --type coffeescript --expr source.tag
 
  `--expr` 参数表示所有的表达式也做预处理. 还可以使用 "cs" 作为 "coffeescript" 的别名. 以下是 CoffeeScript 自定义标签的例子:
 
-```
+```html
 <kids>
 
   <h3 each={ kids[1 .. 2] }>{ name }</h3>
@@ -168,7 +168,7 @@ riot --type es6 source.tag
 
 ES6 自定义标签示例:
 
-```
+```js
 <test>
 
   <h3>{ test }</h3>
@@ -198,7 +198,7 @@ riot --type typescript source.tag
 
 用 TypeScript 实现的自定义标签示例:
 
-```
+```js
 <test>
 
   <h3>{ test }</h3>
@@ -225,7 +225,7 @@ riot --type livescript --expr source.tag
 
 `--expr` 参数表示所有的表达式也要被预处理。也可以使用 "ls" 作为 "livescript" 的别名. LiveScript 的例子:
 
-```
+```html
 <kids>
 
 <h3 each={ kids[1 .. 2] }>{ name }</h3>
@@ -257,7 +257,7 @@ riot --template jade source.tag
 
 Jade 例子:
 
-```
+```jade
 sample
   p test { value }
   script(type='text/coffeescript').
@@ -302,4 +302,4 @@ Riot 默认使用内置的转换器来支持简短的 ES6- 风格的方法写法
 riot --type none --expr source.tag
 ```
 
-如果你有好的想着产品, 请 [共享之](https://github.com/muut/riotjs/issues/58) !
+如果你有好的相关产品, 请 [共享之](https://github.com/muut/riotjs/issues/58) !

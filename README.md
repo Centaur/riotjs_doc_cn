@@ -9,7 +9,7 @@ Riot 小巧，无侵入性，只辅助不强制，学习成本超低。基本上
 以下摘出Riot文档里我认为值得一读的部分做了翻译，链接按照我个人建议的次序排列。
 
 * [编译器](https://github.com/Centaur/riotjs_doc_cn/blob/master/compiler.md)
-* [Guide](https://github.com/Centaur/riotjs_doc_cn/blob/master/riot_guide.md)
+* [指南](https://github.com/Centaur/riotjs_doc_cn/blob/master/guide.md)
 * API
     * [自定义标签](https://github.com/Centaur/riotjs_doc_cn/blob/master/api/tags.md) 
     * [Observable](https://github.com/Centaur/riotjs_doc_cn/blob/master/api/observable.md)
