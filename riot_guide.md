@@ -4,6 +4,8 @@ subtitle: Guide
 description: Developing client-side applications with Riot
 minify: false
 
+完成度100%
+
 ====
 
 # 自定义标签示例
