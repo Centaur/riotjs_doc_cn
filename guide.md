@@ -626,7 +626,7 @@ submit() {
 
 在循环元素中，除了 `each` 属性外，其它都属于子上下文, 因此 `title` 可以被直接访问而 `remove` 需要从 `parent.` 中访问，因为remove方法并不是循环元素的属性.
 
-每一个循环项都是一个 [标签实例](/riotjs/api/#tag-instance). Riot 不会修改原始数据项，因此不会为其添加新的属性。
+每一个循环项都是一个 [标签实例](api/tags.md#tag-instance). Riot 不会修改原始数据项，因此不会为其添加新的属性。
 
 
 ### 循环项的事件处理器
@@ -764,7 +764,7 @@ Observable 是发送和接收消息的一般化工具。它是区分不同模块
 
 只要慎重设计好核心部分和事件接口，团队成员就可以各自独立开发，而互相不打扰。
 
-[Observable API](/riotjs/api/#observable)
+[Observable API](api/observable.md)
 
 
 ## Routing
@@ -779,7 +779,7 @@ Observable 是发送和接收消息的一般化工具。它是区分不同模块
 
 任何浏览器应用都需要路由akce因为在地址栏里总是有一个URL的。
 
-[路由器 API](/riotjs/api/#router)
+[路由器 API](api/router.md)
 
 
 ## 模块化
