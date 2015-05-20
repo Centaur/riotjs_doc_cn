@@ -36,7 +36,7 @@ var tags = riot.mount('*')
 加载指定的 URL 并编译所有的标签，编译完成后调用 `callback` 。例如:
 
 ``` javascript
-riot.compile('my/tags.js', function() {
+riot.compile('my/tags.tag', function() {
   // 加载的标签定义已经可用
 })
 ```
@@ -82,3 +82,67 @@ var js = riot.compile(tag)
 ```
 
 `compile` 函数参数是标签定义字符串，返回 JavaScript 字符串.
+
+### riot.parser.css [tagName, css]
+
+可以使用自定义的预处理器来处理标签中的css. 例如
+
+```js
+riot.parsers.css.myparser = function(tag, css) {
+  return css.replace(/@tag/, tag)
+}
+```
+
+```html
+<custom-parsers>
+  <p>hi</p>
+  <style type="text/myparser">
+    @tag {color: red;}
+  </style>
+</custom-parsers>
+```
+
+将被编译为：
+
+```html
+<custom-parsers>
+  <p>hi</p>
+  <style type="text/myparser">
+    custom-parsers {color: red;}
+  </style>
+</custom-parsers>
+```
+
+### riot.parsers.js [js, options]
+
+可以使用自定义的预处理器来处理标签中的javascript. 例如
+
+```js
+riot.parsers.js.myparser = function(js) {
+  return js.replace(/@version/, '1.0.0')
+}
+```
+
+```html
+<custom-parsers>
+  <p>hi</p>
+  <script type="text/myparser">
+    this.version = "@version"
+  </script>
+</custom-parsers>
+```
+
+将被编译为:
+
+```html
+<custom-parsers>
+  <p>hi</p>
+  <script type="text/myparser">
+    this.version = "1.0.0"
+  </script>
+</custom-parsers>
+```
+
+### riot.parsers.html [html]
+
+指定用来编译html的自定义编译器

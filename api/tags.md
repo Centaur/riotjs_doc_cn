@@ -230,6 +230,7 @@ mytag.unmount(true)
 
 
 - "update" – 标签实例被更新之前触发. 使得在UI表达式被更新之前重新计算上下文数据。
+- "updated" - 标签实例被更新之后触发. 你可以在这里做一些dom更新的操作。
 - "mount" – 在标签被加载到页面上后触发
 - "unmount" – 在标签被从页面上移除后触发
 
@@ -264,13 +265,14 @@ this.on('unmount', function() {
 ```
 
 
-### riot.tag(tagName, html, [css], [constructor]) | #tag
+### riot.tag(tagName, html, [css], [attrs], [constructor]) | #tag
 
 不使用编译器“手动”定义一个新的自定义标签.
 
 - `tagName` 标签名
 - `html` 带 [表达式](/riotjs/guide/#expressions) 的页面布局
 - `css` 标签css (可选)
+- `attrs` 标签属性字符串（可选）
 - `constructor` 在标签表达式被计算前，标签被加载前调用的初始化函数
 
 
@@ -280,6 +282,7 @@ this.on('unmount', function() {
 riot.tag('timer',
   '<p>Seconds Elapsed: { time }</p>',
   'timer { display: block; border: 2px }',
+  'class="tic-toc"',
   function (opts) {
     var self = this
     this.time = opts.start || 0

@@ -238,6 +238,86 @@ riot.mount('todo', { title: 'My TODO app', items: [ ... ] })
 </my-tag>
 ```
 
+### Mixin
+
+Mixin 可以将公共代码在不同标签之间方便地共享。
+
+```js
+var OptsMixin = {
+    init: function() {
+      this.on('updated', function() { console.log('Updated!') })
+    }
+
+    getOpts: function() {
+        return this.opts
+    },
+
+    setOpts: function(opts, update) {
+        this.opts = opts
+
+        if(!update) {
+            this.update()
+        }
+
+        return this
+    }
+}
+
+<my-tag>
+    <h1>{ opts.title }</h1>
+
+    this.mixin(OptsMixin)
+</my-tag>
+```
+
+上例中，我们为所有 `my-tag` 标签实例混入了 `OptsMixin` ，它提供 `getOpts` 和 `setOpts` 方法. `init` 是个特殊方法，用来在标签载入时对mixin进行初始化。 (`init` 方法不能在其它方法里访问)
+
+```
+var my_tag_instance = riot.mount('my-tag')[0]
+
+console.log(my_tag_instance.getOpts()) //will log out any opts that the tag has
+```
+
+标签的mixin可以是 object -- `{'key': 'val'}` `var mix = new function(...)` -- 混入任何其它类型的东西将报错.
+
+`my-tag` 定义现在又加入了一个 `getId` 方法.
+
+```
+function IdMixin() {
+    this.getId = function() {
+        return this._id
+    }
+}
+
+var id_mixin_instance = new IdMixin()
+
+<my-tag>
+    <h1>{ opts.title }</h1>
+
+    this.mixin(OptsMixin, id_mixin_instance)
+</my-tag>
+```
+
+由于定义在标签这个级别，mixin不仅仅扩展了你的标签的功能, 也能够在重复的界面中使用. 每次标签被加载时，即使是子标签, 标签实例也获得了mixin中的代码功能.
+
+### 共享 mixin
+
+为了能够在文件之间和项目之间共享mixin，提供了 `riot.mixin` API. 你可以象这样全局性地注册mixin :
+
+```javascript
+riot.mixin('mixinName', mixinObject)
+```
+
+用 `mixin()` 加上mixin名字来将mixin混入标签.
+
+```
+<my-tag>
+    <h1>{ opts.title }</h1>
+
+    this.mixin('mixinName')
+</my-tag>
+```
+
 ### 标签生命周期 
 
 自定义标签的创建过程是这样的:
@@ -249,7 +329,7 @@ riot.mount('todo', { title: 'My TODO app', items: [ ... ] })
 
 加载完成后，表达式会在以下时机被更新:
 
-1. 当一个事件处理器被调用（如上面ToDo示例中的`toggle`方法）后自动更新。
+1. 当一个事件处理器被调用（如上面ToDo示例中的`toggle`方法）后自动更新。你也可以在事件处理器中设置 `e.preventUpdate = true` 来禁止这种行为。
 2. 当前标签实例的 `this.update()` 方法被调用时
 3. 当前标签的任何一个祖先的 `this.update()` 被调用时. 更新从父亲到儿子单向传播。
 4. 当 `riot.update()` 方法被调用时, 会更新页面上所有的表达式。
@@ -452,11 +532,49 @@ riot.mount('account', { plan: { name: 'small', term: 'monthly' } })
 </script>
 ```
 
-父标签的参数骑过 `riot.mount` 方法的参数设置，而子标签的参数通过标签属性来传递.
+父标签的参数通过 `riot.mount` 方法的参数设置，而子标签的参数通过标签属性来传递.
 
 **重要** 嵌套的标签只能定义在自定义父标签里，如果定义在页面上，将不会被初始化。
 
 ### 嵌套 HTML
+
+以下是页面上一个包含嵌入HTML的自定义标签的例子:
+
+```
+<body>
+  <my-tag>
+    <h3>Hello world!</h3>
+  </my-tag>
+</body>
+
+<script>
+riot.mount('my-tag')
+</script>
+```
+
+有个很酷的方法能够让你访问内部HTML，自定义一个 `inner-html` 标签:
+
+```
+<my-tag>
+  <p>Some tag specific markup</p>
+  <!-- here comes the inner HTML defined on the page -->
+  <inner-html/>
+</my-tag>
+```
+
+以下是 `inner-html` 的代码:
+
+```
+<inner-html>
+  var p = this.parent.root
+  while (p.firstChild) this.root.appendChild(p.firstChild)
+</inner-html>
+```
+
+这个标签会成为Riot将来版本中 "核心标签" 的一部分.
+
+
+## HTML transclusion
 
 "HTML transclusion" 是处理页面上标签内部 HTML 的方法. 通过内置的 `<yield>` 标签来实现. 例如:
 
@@ -656,7 +774,7 @@ submit() {
 </todo>
 ```
 
-事件处理器被执行后，当前标签实例会自动调用 `this.update()` 从而导致所有循环项也被更新. 父亲会发现集合中被删除了一项，从而将对应的DOM结点从document中删除。
+事件处理器被执行后，当前标签实例会自动调用 `this.update()` （你也可以在事件处理器中设置 `e.preventUpdate = true` 来禁止这种行为）从而导致所有循环项也被更新. 父亲会发现集合中被删除了一项，从而将对应的DOM结点从document中删除。
 
 
 ### 循环自定义标签

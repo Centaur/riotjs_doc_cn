@@ -189,7 +189,7 @@ npm install babel
 
 ### TypeScript
 
-TypeScript 为 JavaScript 增加了类型. 要使用它用 `--type typescript` :
+TypeScript 为 JavaScript 增加了可选的类型. 要使用它用 `--type typescript` :
 
 ``` sh
 # 使用 TypeScript 预处理器
@@ -292,6 +292,33 @@ var js = riot.compile(source_string, { parser: myParser, expr: true })
 
 如果希望表达式也被解析，设置 `expr: true` 。
 
+#### 浏览器和服务器中的 riot.parsers 
+
+你也可以创建自己的riot解析器，把它加到 `riot.parsers` 中，在浏览器中和服务器上共享. 例如
+
+```js
+riot.parsers.js.myJsParser = function(js, options) {
+  return doYourThing(js, options)
+}
+
+riot.parsers.css.myCssParser = function(tagName, css) {
+  return doYourThing(tagName, css)
+}
+```
+
+创建好自定义 `riot.parsers` 后，可以象这样使用它们来进行编译
+
+```html
+<custom-parsers>
+  <p>hi</p>
+  <style type="text/myJsParser">
+    @tag {color: red;}
+  </style>
+  <script type="text/myCssParser">
+    this.version = "@version"
+  </script>
+</custom-parsers>
+```
 
 ### 不处理
 
@@ -300,6 +327,35 @@ Riot 默认使用内置的转换器来支持简短的 ES6- 风格的方法写法
 ``` sh
 # 不作预处理
 riot --type none --expr source.tag
+```
+
+### AMD 与 CommonJS
+
+Riot 标签的编译可以加入 `AMD` (Asynchronous Module Definition) 和 `CommonJS` 支持. 如果 Riot 是通过 AMD 加载器如 [RequireJS](http://requirejs.org/) 或 CommonJS 加载器如 [Browserify](http://browserify.org/) 加载则需要这种配置.
+
+无论用哪种加载器，都需要将 Riot 库以 `riot` 来 define 或 require.
+
+``` sh
+# 使用 AMD 和 CommonJS
+riot --m
+```
+
+AMD 例子:
+
+```js
+
+define(['riot', 'tags'], function (riot) {
+  riot.mount('*');
+});
+```
+
+CommonJS 例子:
+
+```js
+var riot = require('riot');
+var tags = require('tags');
+
+riot.mount('*');
 ```
 
 如果你有好的相关产品, 请 [共享之](https://github.com/muut/riotjs/issues/58) !
