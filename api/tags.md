@@ -26,7 +26,7 @@ var tags = riot.mount('.customer')
 var tags = riot.mount('account', api)
 ```
 
-@返回值: 加载成功的[标签实例](#tag-instance)的数组
+@返回值: 加载成功的[标签实例](#标签实例)的数组
 
 ### riot.mount('*', [opts]) | #mount-star.
 
@@ -36,7 +36,7 @@ Riot使用特殊选择器 "*" 来加载页面上所有自定义标签:
 riot.mount('*')
 ```
 
-@返回值: 加载成功的[标签实例](#tag-instance)的数组 
+@返回值: 加载成功的[标签实例](#标签实例)的数组 
 
 
 ### riot.mount(selector, tagName, [opts]) | #mount-tag
@@ -53,7 +53,7 @@ riot.mount('*')
 var tags = riot.mount('div#main', 'my-tag', api)
 ```
 
-@返回值: 加载成功的 [标签实例](#tag-instance)数组
+@返回值: 加载成功的 [标签实例](#标签实例)数组
 
 
 ### riot.mount(domNode, tagName, [opts]) | #mount-dom
@@ -65,7 +65,7 @@ var tags = riot.mount('div#main', 'my-tag', api)
 riot.mount(document.getElementById('slide'), 'users', api)
 ```
 
-@返回值: 加载成功的 [标签实例](#tag-instance) 数组
+@返回值: 加载成功的 [标签实例](#标签实例) 数组
 
 
 ### riot.mountTo(domNode, tagName, [opts]) | #mount-to
@@ -86,7 +86,7 @@ riot.render(mytag, { foo: 'bar' })
 @返回值: html 
 
 
-## 标签实例 | #tag-instance
+## 标签实例
 
 每一个标签实例有如下属性:
 
@@ -335,7 +335,7 @@ riot.tag('tag-name', my_tmpl.innerHTML, function(opts) {
 
 更新页面上所有加载的标签实例和它们的表达式。
 
-@返回值: 加载成功的 [标签实例](#tag-instance) 数组.
+@返回值: 加载成功的 [标签实例](#标签实例) 数组.
 
 ### 使用 `<yield>` 标签来包含内部HTML | #yield
 
