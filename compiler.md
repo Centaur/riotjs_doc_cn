@@ -35,7 +35,7 @@ npm install riot -g
 <my-tag></my-tag>
 
 <!-- 包含 riot.js -->
-<script src="//cdn.jsdelivr.net/riot/2.0/riot.min.js"></script>
+<script src="//cdn.jsdelivr.net/riot/2.1/riot.min.js"></script>
 
 <!-- 包含预编译的自定义标签 (正常 javascript) -->
 <script src="path/to/javascript/with-tags.js"></script>
@@ -119,7 +119,7 @@ compile 函数接受string参数，返回string.
 <my-tag>
   <h3>My layout</h3>
 
-  <script type="coffeescript">
+  <script type="coffee">
     @hello = 'world'
   </script>
 </my-tag>
@@ -130,10 +130,10 @@ compile 函数接受string参数，返回string.
 
 ``` sh
 # 使用 coffeescript 预处理器
-riot --type coffeescript --expr source.tag
+riot --type coffee --expr source.tag
 ```
 
- `--expr` 参数表示所有的表达式也做预处理. 还可以使用 "cs" 作为 "coffeescript" 的别名. 以下是 CoffeeScript 自定义标签的例子:
+ `--expr` 参数表示所有的表达式也做预处理. 还可以使用 "cs" 作为 "coffee" 的别名. 以下是 CoffeeScript 自定义标签的例子:
 
 ```html
 <kids>
@@ -260,11 +260,11 @@ Jade 例子:
 ```jade
 sample
   p test { value }
-  script(type='text/coffeescript').
+  script(type='text/coffee').
     @value = 'sample'
 ```
 
-你可能注意到了，在template中也可以定义script类型. 以上使用的是 coffeescript. 转换使用的是 [jade](https://github.com/jadejs/jade) :
+你可能注意到了，在template中也可以定义script类型. 以上使用的是 coffee. 转换使用的是 [jade](https://github.com/jadejs/jade) :
 
 ``` sh
 npm install jade
@@ -292,7 +292,7 @@ var js = riot.compile(source_string, { parser: myParser, expr: true })
 
 如果希望表达式也被解析，设置 `expr: true` 。
 
-#### 浏览器和服务器中的 riot.parsers 
+#### 浏览器和服务器中的 riot.parsers
 
 你也可以创建自己的riot解析器，把它加到 `riot.parsers` 中，在浏览器中和服务器上共享. 例如
 
@@ -358,4 +358,4 @@ var tags = require('tags');
 riot.mount('*');
 ```
 
-如果你有好的相关产品, 请 [共享之](https://github.com/muut/riotjs/issues/58) !
+如果你有好的相关产品, 请 [共享之](https://github.com/riotjs/riotjs/issues/58) !

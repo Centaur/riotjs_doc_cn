@@ -14,7 +14,7 @@ Riot 是对当前写大量 boilerplate 代码和不必要的复杂性的反动�
 
 
 ### 为什么要支持 IE8?
-因为其它它还在被广泛使用着. 根据 [Net Market Share](http://www.netmarketshare.com/) 全球桌面的占有率为 19% ，根据 [StatCounter](http://statcounter.com/demo/browser/) 占有率是 2.6% 
+因为其它它还在被广泛使用着. 根据 [Net Market Share](http://www.netmarketshare.com/) 全球桌面的占有率为 19% ，根据 [StatCounter](http://statcounter.com/demo/browser/) 占有率是 2.6%
 
 Net Market Share 的统计对每个用户单独计数，而 StatCounter 的算法给常上网的用户额外的高权重.
 
@@ -23,7 +23,7 @@ Riot 免费，开源，使用 MIT License. 没有专利 [Additional Grant of Pat
 
 
 ### Riot 可以用于生产吗?
-我们认为可以. 我们自己的 muut.com 网站大量使用它: 注册, 论坛设置，帐号页面等等. 但不是所有的场景都被细致地测试到了, 2.0 是一次大的重写，并没有被广泛使用. 请到 [这里](https://github.com/muut/riotjs/issues)提交 issues .
+我们认为可以. 我们自己的 muut.com 网站大量使用它: 注册, 论坛设置，帐号页面等等. 但不是所有的场景都被细致地测试到了, Riot 2 是一次大的重写，还没有被广泛使用. 请到 [这里](https://github.com/riotjs/riotjs/issues)提交 issues .
 
 
 ### 标签名中必须使用横线 (译者注：-) 吗?
@@ -59,5 +59,3 @@ Riot 减少了对jQuery的需求。你不再需要选择器，遍历，事件和
 1. 性能提升 ( 特别是循环 )
 2. 插件系统
 3. 使用 HTML属性进行标签参数验证
-
-

@@ -58,7 +58,7 @@ Riot 自定义标签是构建用户界面的单元。它们构成了应用的"�
 
 自定义标签会被 [编译](compiler.md) 成 JavaScript.
 
-参阅 [在线示例](http://muut.github.io/riotjs/demo/), 也可以浏览 [代码](https://github.com/muut/riotjs/tree/gh-pages/demo), 或下载[zip包](https://github.com/muut/riotjs/archive/gh-pages.zip).
+参阅 [在线示例](http://muut.github.io/riotjs/demo/), 也可以浏览 [代码](https://github.com/riotjs/riotjs/tree/gh-pages/demo), 或下载[zip包](https://github.com/riotjs/riotjs/archive/gh-pages.zip).
 
 
 
@@ -123,12 +123,12 @@ Riot标签是布局（HTML）与逻辑（JavaScript）的组合。以下是基�
 可以使用 `type` 属性来指定预处理器. 例如:
 
 ```html
-<script type="coffeescript">
-  # 标签逻辑
+<script type="coffee">
+  # coffeescript 标签逻辑
 </script>
 ````
 
-现在可选的`type`值包括 "coffeescript", "typescript", "es6" 和 "none". 也可以为 `language` 加上 "text/" 前缀, 如 "text/coffeescript".
+现在可选的`type`值包括 "coffee", "typescript", "es6" 和 "none". 也可以为 `language` 加上 "text/" 前缀, 如 "text/coffee".
 
 参阅 [预处理器](compiler.html#预处理器) 获取更多细节。
 
@@ -172,6 +172,13 @@ Riot标签是布局（HTML）与逻辑（JavaScript）的组合。以下是基�
 ```
 
 css的提取和移动只执行一次，无论此自定义标签被初始化多少次。
+为了能够方便地覆盖CSS，你可以指定Riot在`<head>`中的哪个位置插入标签所定义的css:
+
+```html
+<style type="riot"></style>
+```
+
+例如，在某些场景下可以指定将riot组件库的标签css放在normalize.css后面，而放在网站的整体主题CSS之前，这样可以覆盖组件库的默认风格。
 
 ## 加载
 
@@ -318,7 +325,7 @@ riot.mixin('mixinName', mixinObject)
 </my-tag>
 ```
 
-### 标签生命周期 
+### 标签生命周期
 
 自定义标签的创建过程是这样的:
 
@@ -854,7 +861,7 @@ console.log(html) // <timer><p>Seconds Elapsed: 42</p></timer>
 
 循环和条件渲染都支持.
 
-# 设计理念 
+# 设计理念
 
 
 ## 提供工具，而不是策略
@@ -891,7 +898,7 @@ Observable 是发送和接收消息的一般化工具。它是区分不同模块
 
 1. 修改 URL 的 hash 部分
 2. hash 变化时进行通知
-3. 查看当前 hash 
+3. 查看当前 hash
 
 路由的逻辑可以放在任何地方; 在自定义标签中或 非UI模块中. 有些应用框架将路由器作为一个中央模块，由它将任务派发给应用的其它部分。而有些则采取更温和的方式，将URL事件象键盘事件一样处理，不影响整体的架构。
 

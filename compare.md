@@ -9,7 +9,7 @@ description: How Riot differs from React and Polymer
 
 # React
 
-Riot 2.0 受到 React 和 “内聚” 思想的启发。引用 Facebook 开发人员的话:
+Riot 2 受到 React 和 “内聚” 思想的启发。引用 Facebook 开发人员的话:
 
 > "模板分离的是技术，而不是关注点."
 
@@ -141,9 +141,9 @@ Riot 提供了自定义标签，事件触发器 (observable) 和路由功能. �
 你可以使用Riot的observable和路由器构造一个类似 Flux 的系统. 事实上这东西已经 [有了](https://github.com/jimsparkman/RiotControl).
 
 
-### 大小相差 24倍 - 128倍 
+### 大小相差 24倍 - 128倍
 
-React 比 Riot 大 24 倍 
+React 比 Riot 大 24 倍
 
 <small><em>react.min.js</em> – 127KB</small>
 <span class="bar red"></span>
@@ -186,7 +186,7 @@ Polymer 使用 Web Component 标准，使它在最新的浏览器上可用. 这�
 5. Polymer不支持服务端渲染。
 
 
-### 大小相差22倍 
+### 大小相差22倍
 
 Polymer (v0.5.2) 比 Riot 大 22 倍
 

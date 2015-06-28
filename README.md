@@ -1,6 +1,6 @@
 # riotjs 文档中译版
 
-对应 riotjs版本 2.1.0
+对应 riotjs版本 2.2.0 (循环比React快4-5倍)
 
 ## 前言
 
@@ -11,10 +11,9 @@
 * [编译器](https://github.com/Centaur/riotjs_doc_cn/blob/master/compiler.md)
 * [指南](https://github.com/Centaur/riotjs_doc_cn/blob/master/guide.md)
 * API
-    * [自定义标签](https://github.com/Centaur/riotjs_doc_cn/blob/master/api/tags.md) 
+    * [自定义标签](https://github.com/Centaur/riotjs_doc_cn/blob/master/api/tags.md)
     * [Observable](https://github.com/Centaur/riotjs_doc_cn/blob/master/api/observable.md)
     * [路由器](https://github.com/Centaur/riotjs_doc_cn/blob/master/api/router.md)
     * [编译器](https://github.com/Centaur/riotjs_doc_cn/blob/master/api/compiler.md)
 * [与其它库的比较](https://github.com/Centaur/riotjs_doc_cn/blob/master/compare.md)
-* [FAQ](https://github.com/Centaur/riotjs_doc_cn/blob/master/faq.md)    
-    
+* [FAQ](https://github.com/Centaur/riotjs_doc_cn/blob/master/faq.md)
