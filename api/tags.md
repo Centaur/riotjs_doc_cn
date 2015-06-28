@@ -22,7 +22,7 @@ var tags = riot.mount('pricing')
 // 加载所有class名称是 .customer 的自定义标签
 var tags = riot.mount('.customer')
 
-// 加载 <account> 标签并传递一个 API 对象作为参数 
+// 加载 <account> 标签并传递一个 API 对象作为参数
 var tags = riot.mount('account', api)
 ```
 
@@ -36,7 +36,7 @@ Riot使用特殊选择器 "*" 来加载页面上所有自定义标签:
 riot.mount('*')
 ```
 
-@返回值: 加载成功的[标签实例](#标签实例)的数组 
+@返回值: 加载成功的[标签实例](#标签实例)的数组
 
 
 ### riot.mount(selector, tagName, [opts]) | #mount-tag
@@ -83,7 +83,7 @@ var mytag = require('my-tag')
 riot.render(mytag, { foo: 'bar' })
 ```
 
-@返回值: html 
+@返回值: html
 
 
 ## 标签实例
@@ -288,10 +288,10 @@ riot.tag('timer',
     this.time = opts.start || 0
 
     this.tick = function () {
-      self.update({ time: ++this.time })
+      self.update({ time: ++self.time })
     }
 
-    var timer = setInterval(this.tick, 1000)
+    var timer = setInterval(self.tick, 1000)
 
     this.on('unmount', function () {
       clearInterval(timer)
