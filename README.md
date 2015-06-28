@@ -1,6 +1,8 @@
 # riotjs 文档中译版
 
-对应 riotjs版本 2.2.0 (循环比React快4-5倍)
+[![Join the chat at https://gitter.im/Centaur/riotjs_doc_cn](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Centaur/riotjs_doc_cn?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
+对应 riotjs版本 2.2.0
 
 ## 前言
 
