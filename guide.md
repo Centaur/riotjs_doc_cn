@@ -73,7 +73,7 @@ Riot标签是布局（HTML）与逻辑（JavaScript）的组合。以下是基�
 * 支持ES6 方法语法: `methodName()` 会被理解成 `this.methodName = function()` ，`this` 变量总是指向当前标签实例。
 * 可以使用针对 class 名的简化语法: 当 `done` 的值是 true时，`class={ completed: done }` 将被渲染成 `class="completed"`。
 * 如果表达式的值不为真值，则布尔型的属性(checked, selected 等等..)将不被渲染: `<input checked={ undefined }>` 的渲染结果是 `<input>`.
-* 所有的属性名必须是 *小写*.
+* 所有的属性名必须是 *小写*. 这是由于浏览器的限制。
 * 支持自关闭标签: `<div/>` 等价于 `<div></div>`. 那些众所周知的 "不关闭标签" 如 `<br>`, `<hr>`, `<img>` or `<input>` 在编译后总是不关闭的。
 * 自定义标签需要被关闭（正常关闭，或自关闭）。
 * 标准 HTML tags (`label`, `table`, `a` 等..) 也可以被自定义，但并不建议这么做。
@@ -253,7 +253,7 @@ Mixin 可以将公共代码在不同标签之间方便地共享。
 var OptsMixin = {
     init: function() {
       this.on('updated', function() { console.log('Updated!') })
-    }
+    },
 
     getOpts: function() {
         return this.opts
@@ -277,7 +277,7 @@ var OptsMixin = {
 </my-tag>
 ```
 
-上例中，我们为所有 `my-tag` 标签实例混入了 `OptsMixin` ，它提供 `getOpts` 和 `setOpts` 方法. `init` 是个特殊方法，用来在标签载入时对mixin进行初始化。 (`init` 方法不能在其它方法里访问)
+上例中，我们为所有 `my-tag` 标签实例混入了 `OptsMixin` ，它提供 `getOpts` 和 `setOpts` 方法. `init` 是个特殊方法，用来在标签载入时对mixin进行初始化。 (`init` 方法不能混入此mixin的标签中访问)
 
 ```
 var my_tag_instance = riot.mount('my-tag')[0]
@@ -287,7 +287,7 @@ console.log(my_tag_instance.getOpts()) //will log out any opts that the tag has
 
 标签的mixin可以是 object -- `{'key': 'val'}` `var mix = new function(...)` -- 混入任何其它类型的东西将报错.
 
-`my-tag` 定义现在又加入了一个 `getId` 方法.
+`my-tag` 定义现在又加入了一个 `getId` 方法，以及`OptMixin`中除`init`以外的所有其它方法
 
 ```
 function IdMixin() {
@@ -526,6 +526,7 @@ Riot 表达式只能渲染不带HTML格式的文本值。如果真的需要，�
 
 </subscription>
 ```
+<span class="tag red">important</span> 注意我们使用下划线的风格（而不是驼峰风格）对 `show_details` 进行命名，由于浏览器的设定，驼峰风格的命名会被自动转换成小写.
 
 如果在页面上加载 `account` 标签，带 `plan` 参数:
 
@@ -731,7 +732,9 @@ submit() {
 
 ### 上下文
 
-循环中的每一项将创建一个新的上下文，从其中通过 `parent` 变量来访问上级上下文. 例如:
+循环中的每一项将创建一个新的上下文([标签实例](api/tags#tag-instance))。如果有嵌套的循环，循环中的子标签都会继承父循环中定义了而自己未定义的属性和方法。
+Riot通过这种方法来避免重写不应在父标签中重写的东西。
+从子符合中可以通过显式地调用 `parent` 变量来访问上级上下文. 例如:
 
 
 ```js

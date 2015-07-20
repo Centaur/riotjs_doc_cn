@@ -14,7 +14,7 @@ Riot 是对当前写大量 boilerplate 代码和不必要的复杂性的反动�
 
 
 ### 为什么要支持 IE8?
-因为其它它还在被广泛使用着. 根据 [Net Market Share](http://www.netmarketshare.com/) 全球桌面的占有率为 19% ，根据 [StatCounter](http://statcounter.com/demo/browser/) 占有率是 2.6%
+因为其它它还在被广泛使用着. 根据 [Net Market Share](http://www.netmarketshare.com/) 全球桌面的占有率为 19% ，根据 [StatCounter](http://statcounter.com/demo/browser/) 占有率是 2.6%. 所以在很多项目中还是需要考虑[对IE8的支持](https://muut.com/riotjs/download.html#ie8-support)。
 
 Net Market Share 的统计对每个用户单独计数，而 StatCounter 的算法给常上网的用户额外的高权重.
 

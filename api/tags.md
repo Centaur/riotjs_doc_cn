@@ -131,7 +131,7 @@ riot.render(mytag, { foo: 'bar' })
 
 </my-tag>
 ```
-
+如果使用了同一个子标签的多个实例，则它们是作为一个数组来访问的 `this.tags.child[n]`
 也可以用 `name` 属性为嵌套标签实例取一个其它的名称。
 
 ``` html
