@@ -141,15 +141,15 @@ Riot 提供了自定义标签，事件触发器 (observable) 和路由功能. �
 你可以使用Riot的observable和路由器构造一个类似 Flux 的系统. 事实上这东西已经 [有了](https://github.com/jimsparkman/RiotControl).
 
 
-### 大小相差 24倍 - 128倍
+### 大小相差 10倍 - 128倍
 
-React 比 Riot 大 24 倍
+React 比 Riot 大 10 倍
 
-<small><em>react.min.js</em> – 127KB</small>
+<small><em>react.min.js</em> – 121KB</small>
 <span class="bar red"></span>
 
-<small><em>riot.min.js</em> – 6.7KB</small>
-<span class="bar blue" style="width: 4.8%"></span>
+<small><em>riot.min.js</em> – 13.21KB</small>
+<span class="bar blue" style="width: 10.8%"></span>
 
 <br>
 
@@ -186,15 +186,15 @@ Polymer 使用 Web Component 标准，使它在最新的浏览器上可用. 这�
 5. Polymer不支持服务端渲染。
 
 
-### 大小相差22倍
+### 大小相差10倍
 
-Polymer (v0.5.2) 比 Riot 大 22 倍
+Polymer (v0.5.6) 比 Riot 大 10 倍
 
-<small><em>polymer.min.js</em> – 120KB</small>
+<small><em>polymer.min.js</em> – 123KB</small>
 <span class="bar red"></span>
 
-<small><em>riot.min.js</em> – 6.7KB</small>
-<span class="bar blue" style="width: 4.5%"></span>
+<small><em>riot.min.js</em> – <span class="riot-size">13.21kb</span></small>
+<span class="bar blue" style="width: 10%"></span>
 
 Web components 被称为 [polyfill之王](http://developer.telerik.com/featured/web-components-arent-ready-production-yet/) ，这就是为什么 Polymer的实现需要这么多代码。
 
