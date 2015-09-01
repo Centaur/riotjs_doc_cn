@@ -1,6 +1,6 @@
-# riotjs 文档中译版
+## 注意 本仓库的工作已合并至新的[riotjs 官网仓库](https://github.com/riot/riot.github.io) ，今后可以直接在[官网](http://riotjs.com/zh) 上直接阅读中文文档了。中文版的翻译工作今后将在 https://github.com/Centaur/riot.github.io 上继续，欢迎向它提交PR
 
-[![Join the chat at https://gitter.im/Centaur/riotjs_doc_cn](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Centaur/riotjs_doc_cn?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# riotjs 文档中译版
 
 对应 riotjs版本 2.2.4
 
