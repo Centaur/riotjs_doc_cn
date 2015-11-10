@@ -1,4 +1,4 @@
-## 注意 本仓库的工作已合并至新的[riotjs 官网仓库](https://github.com/riot/riot.github.io) ，今后可以在官网 上[直接阅读中文文档](http://riotjs.com/zh)了。中文版的翻译工作今后将在 https://github.com/Centaur/riot.github.io 上继续，欢迎向它提交PR
+## 注意 本仓库的工作已合并至新的[riotjs 官网仓库](https://github.com/riot/riot.github.io) ，今后可以在官网 上[直接阅读中文文档](http://riotjs.com/zh)了。中文版的翻译工作今后将在 https://github.com/riot/riot.github.io/tree/v2.3.0-zh 上继续，欢迎向它提交PR
 
 # riotjs 文档中译版
 
